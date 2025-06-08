@@ -10,7 +10,7 @@
           <FloatLabel class="w-full">
             <InputText
               id="material-name"
-              v-model="materialName"
+              v-model="newMaterial.name"
               class="w-full"
               autocomplete="off"
             />
@@ -21,7 +21,7 @@
         <div class="w-full flex-grow-1 flex gap-3">
           <FloatLabel class="w-full" style="max-width: 12rem">
             <InputNumber
-              v-model="materialQuantity"
+              v-model="newMaterial.cuantity"
               inputId="materialQuantity"
               inputClass="w-full"
               class="w-full"
@@ -30,14 +30,29 @@
             />
             <label for="material-qty">Cantidad</label>
           </FloatLabel>
+
           <div class="w-3rem">
-            <Button icon="pi pi-plus" class="p-button-sm h-full" />
+            <Button icon="pi pi-plus" class="p-button-sm h-full" @click="addMaterial" />
           </div>
         </div>
       </form>
-      <p>dead grandma</p>
+
+      <DataTable :value="materials" tableStyle="min-width: 20rem">
+        <Column>
+          <template #body="slotProps">
+            <Button
+              icon="pi pi-times"
+              class="p-button-rounded p-button-danger p-button-sm"
+              @click="deleteMaterial(slotProps.data.id)"
+            />
+          </template>
+        </Column>
+        <Column field="name" header="Nombre"></Column>
+        <Column field="cuantity" header="Cantidad"></Column>
+      </DataTable>
+
       <div class="flex justify-content-center gap-2 mt-4">
-        <Button label="Generar y descargar" />
+        <Button label="Generar y descargar" @click="handleClick" />
       </div>
     </div>
   </div>
@@ -46,12 +61,39 @@
 <script setup>
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import ColumnGroup from 'primevue/columngroup' // optional
-import Row from 'primevue/row'
 import InputText from 'primevue/inputtext'
 import FloatLabel from 'primevue/floatlabel'
 import InputNumber from 'primevue/inputnumber'
 import Button from 'primevue/button'
+import { ref } from 'vue'
+
+let id = 0
+const newMaterial = ref({
+  name: '',
+  cuantity: null,
+})
+
+const emit = defineEmits(['materials'])
+
+const handleClick = () => {
+  emit('materials', materials.value)
+}
+const materials = ref([])
+
+const addMaterial = () => {
+  if (newMaterial.value !== null) {
+    materials.value.push({
+      id: id++,
+      name: newMaterial.value.name,
+      cuantity: newMaterial.value.cuantity,
+    })
+    newMaterial.value = { name: '', cuantity: null }
+  }
+}
+
+const deleteMaterial = (idToDelete) => {
+  materials.value = materials.value.filter((material) => material.id !== idToDelete)
+}
 </script>
 
 <style></style>
