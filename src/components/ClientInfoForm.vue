@@ -19,7 +19,15 @@
             <label>Direccion</label>
           </FloatLabel>
         </div>
+
+        <div class="field col-12">
+          <FloatLabel variant="on">
+            <InputText id="on_label" v-model="clientId" autocomplete="off" class="w-full" />
+            <label>Identificador</label>
+          </FloatLabel>
+        </div>
       </div>
+
       <div class="flex justify-content-center mt-4">
         <Button label="Seguir" @click="handleClick" :disabled="!clientName || !clientAddress" />
       </div>
@@ -37,11 +45,13 @@ const emit = defineEmits(['clientInfo'])
 
 const clientName = ref('')
 const clientAddress = ref('')
+const clientId = ref(null)
 
 const handleClick = () => {
   emit('clientInfo', {
     name: clientName.value,
     address: clientAddress.value,
+    id: clientId.value,
   })
 }
 </script>

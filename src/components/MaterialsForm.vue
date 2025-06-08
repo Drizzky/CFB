@@ -52,7 +52,7 @@
       </DataTable>
 
       <div class="flex justify-content-center gap-2 mt-4">
-        <Button label="Generar y descargar" @click="handleClick" />
+        <Button label="Seguir" @click="handleClick" />
       </div>
     </div>
   </div>
@@ -95,5 +95,3 @@ const deleteMaterial = (idToDelete) => {
   materials.value = materials.value.filter((material) => material.id !== idToDelete)
 }
 </script>
-
-<style></style>
