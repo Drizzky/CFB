@@ -22,7 +22,13 @@
 
         <div class="field col-12">
           <FloatLabel variant="on">
-            <InputText id="on_label" v-model="clientId" autocomplete="off" class="w-full" />
+            <InputText
+              id="on_label"
+              v-model="clientId"
+              autocomplete="off"
+              class="w-full"
+              type="number"
+            />
             <label>Identificador</label>
           </FloatLabel>
         </div>

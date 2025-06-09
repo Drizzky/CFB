@@ -27,6 +27,7 @@
               class="w-full"
               :min="0"
               :max="999"
+              autocomplete="off"
             />
             <label for="material-qty">Cantidad</label>
           </FloatLabel>
