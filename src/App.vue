@@ -27,7 +27,7 @@
           </section>
 
           <section>
-            <h3>Materiales</h3>
+            <h5>Materiales</h5>
             <table class="materials-table">
               <thead>
                 <tr>
@@ -44,13 +44,13 @@
             </table>
           </section>
 
-          <section>
-            <h4>Presupuesto válido por 10 días.</h4>
+          <section id="notes">
+            <h5>Presupuesto válido por 10 días.</h5>
             <p>50% antes de empezar la obra 30 % a mitad de obra 20 % al finalizar</p>
           </section>
 
           <!-- Fixed the footer id typo here -->
-          <footer id="receiptFooter" class="border-top-1 border-gray-300">
+          <footer id="receiptFooter" class="">
             <div class="text-left ml-0">
               <p>Importe: {{ formatCurrency(totalPrice.basePrice) }}</p>
               <p>IVA: {{ formatCurrency(totalPrice.tax) }}</p>
@@ -110,7 +110,7 @@ const downloadPDF = () => {
   }
 
   const options = {
-    margin: 0.5,
+    margin: 0,
     filename: `presupuesto${clientInfo.value.id}`,
     image: { type: 'jpeg', quality: 0.98 },
     html2canvas: { scale: 2 },
@@ -125,7 +125,6 @@ const downloadPDF = () => {
 .receipt {
   max-width: 600px;
   padding: 20px;
-
   background-color: white;
   font-family: 'Courier New', monospace;
   color: black;
@@ -135,6 +134,7 @@ const downloadPDF = () => {
 .materials-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.5rem;
 }
 
 .materials-table thead th {
@@ -188,13 +188,26 @@ img {
 
 #receiptFooter {
   text-align: left;
-  padding-top: 1rem;
-  border-top: 1px solid #ccc;
   padding-left: 350px;
 }
 
 #receiptFooter > div {
   margin-left: 100px;
   display: inline-block;
+}
+
+#receiptFooter > div > p {
+  font-size: 14px;
+}
+h5 {
+  margin-top: 0;
+}
+
+#notes,
+#notes > p {
+  font-size: smaller;
+}
+#notes > p {
+  margin-top: -1rem;
 }
 </style>
