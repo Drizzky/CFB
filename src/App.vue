@@ -49,7 +49,6 @@
             <p>50% antes de empezar la obra 30 % a mitad de obra 20 % al finalizar</p>
           </section>
 
-          <!-- Fixed the footer id typo here -->
           <footer id="receiptFooter" class="">
             <div class="text-left ml-0">
               <p>Importe: {{ formatCurrency(totalPrice.basePrice) }}</p>
@@ -58,7 +57,8 @@
             </div>
           </footer>
         </div>
-        <div class="flex justify-content-center mt-2">
+        <div class="flex justify-content-center mt-2 gap-2">
+          <Button @click="handleClick" severity="danger" icon="pi pi-replay" class />
           <Button @click="downloadPDF">Descargar PDF</Button>
         </div>
       </div>
@@ -94,6 +94,10 @@ const handleMaterials = (value) => {
 const handlePrice = (value) => {
   totalPrice.value = value
   currentStep.value = 4
+}
+
+const handleClick = () => {
+  currentStep.value = 1
 }
 
 const formatCurrency = (value) => {
