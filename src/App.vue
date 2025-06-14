@@ -12,7 +12,7 @@
       v-if="currentStep === 4"
       class="fadein animation-duration-1000 flex justify-content-center p-4"
     >
-      <div>
+      <div class="w-11">
         <div ref="pdfContent" class="receipt">
           <header id="recieptHeader">
             <img src="../public/logo.png" alt="" />
