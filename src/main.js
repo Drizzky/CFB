@@ -3,12 +3,12 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import PrimeVue from 'primevue/config'
-import Aura from '@primevue/themes/Aura'
+import Lara from '@primevue/themes/lara'
 import { definePreset } from '@primevue/themes'
 import 'primeicons/primeicons.css'
 import 'primeflex/primeflex.css'
 
-const minimalTheme = definePreset(Aura, {
+const minimalTheme = definePreset(Lara, {
   semantic: {
     primary: {
       50: '#f9f9f9',
@@ -58,6 +58,26 @@ const minimalTheme = definePreset(Aura, {
           focusBackground: '#e6e6e6',
           color: '#000000',
           focusColor: '#262626',
+        },
+      },
+      dark: {
+        primary: {
+          color: '#ffffff',
+          inverseColor: '#000000',
+          hoverColor: '#f2f2f2',
+          activeColor: '#cccccc',
+        },
+        secondary: {
+          color: '#ffffff',
+          inverseColor: '#000000',
+          hoverColor: '#dddddd',
+          activeColor: '#bbbbbb',
+        },
+        highlight: {
+          background: '#1a1a1a',
+          focusBackground: '#333333',
+          color: '#ffffff',
+          focusColor: '#f0f0f0',
         },
       },
     },
